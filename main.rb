@@ -8,6 +8,11 @@
 
 #PLAY - start Game class? initialize conditions etc
 #define game functions in definitions in the class
+
+# in game play, generate random shapes, collect into an array
+# during game, user is iterating through randomly generated shape array
+# if user matches the shape, += 1 to correct array,
+# if user does not match a symbol, add 1 to error array.
 #----------GEMS------------------------------------------
 
 
@@ -43,10 +48,10 @@ end
 def circle
     clear
     empty_border(2)
-    puts "   
+    puts "                          
                    *** ### ### ***
-               *##                 ##*
-           *##                         ##*
+               *######################*
+           **                           ##*
         *##                               ##*
       *##                                   ##*
     *##                                       ##*
@@ -64,7 +69,35 @@ def circle
         *#                                ##*
            *##                         ##*
                *##                 ##*
-                   *** ### ### ***             "
+                   *** ### ### ***             "colorize(:green)
+end
+
+def square
+    puts "   
+    ____________________________________________      
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    |                                          |
+    --------------------------------------------
+    ".colorize(:magneta)
+end
+
+def triangle
+end
+
+def star
 end
 
 #--------------WELCOME SCREEN SECTION---------------------
