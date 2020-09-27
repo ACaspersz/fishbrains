@@ -12,6 +12,9 @@ require 'image_optim_pack'
 
 
 #------------------ART STYLES-----------------------------
+def pause
+  sleep(2)
+end
 
 def circle
     puts "                          
@@ -105,17 +108,45 @@ def heart
 ".colorize(:red)
 end
 
-random_array = ["square", "circle", "heart", "diamond"]
 
+random_array = ["square", "circle", "heart", "diamond"]
 20.times do 
 random_array.shuffle!
 if random_array.sample == "square"
   square
+  pause
+  input = gets.chomp
+  if input == "1"
+    puts "Correct!"
+  else 
+    puts "incorrect!"
+  end
 elsif random_array.sample == "diamond"
   diamond
-  elsif random_array.sample == "heart"
+  input = gets.chomp
+  if input == "1"
+    puts "Correct!"
+  else 
+    puts "incorrect!"
+  end
+elsif random_array.sample == "heart"
     heart
-  else
+    input = gets.chomp
+    if input == "1"
+      puts "Correct!"
+    else 
+      puts "incorrect!"
+    end
+elsif random_array.sample == "circle"
     circle
+    input = gets.chomp
+    if input == "1"
+      puts "Correct!"
+    else 
+      puts "incorrect!"
+    end
+else 
+    puts "invalid"
+
   end
 end
