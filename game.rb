@@ -1,7 +1,7 @@
-require './art/circle'
-require './art/heart'
-require './art/square'
-require './art/diamond'
+require './art/shell'
+require './art/turtle'
+require './art/starfish'
+require './art/anchor'
 
 class Game
     attr_accessor :play, :correct_answers, :wrong_answers
@@ -207,10 +207,10 @@ class Game
     
   def rand_symbol
     symbols = [
-      Art::square,
+      Art::starfish,
       Art::shell,
-      Art::heart,
-      Art::diamond
+      Art::turtle,
+      Art::anchor
     ]
     random_symbol = symbols.shuffle[0]
     puts random_symbol
@@ -227,46 +227,46 @@ class Game
 
 
 
-  def draw_square
+  def draw_starfish
     input = gets.chomp.to_i
-        if input == 1 && @game_array[-1] == "square"
+        if input == 1 && @game_array[-1] == "starfish"
             puts "Correct!"
             @correct_counter += 1
-        elsif input == 0 && @game_array[-1] != "square"
+        elsif input == 0 && @game_array[-1] != "starfish"
             puts "Correct!"
             @correct_counter += 1
-        elsif input == 1 && @game_array[-1] != "square"
+        elsif input == 1 && @game_array[-1] != "starfish"
             puts "incorrect!"
             @incorrect_counter += 1
-        elsif input == 0 && @game_array == "square"
+        elsif input == 0 && @game_array == "starfish"
             puts "incorrect!"
             @incorrect_counter += 1
         #want to put an argument error here to raise an error and also attempt to retry the question
         else
             puts "invalid"
         end
-        @game_array.push "square"
+        @game_array.push "starfish"
   end
 
-  def draw_diamond
+  def draw_anchor
     input = gets.chomp.to_i
-        if input == 1 && @game_array[-1] == "diamond"
+        if input == 1 && @game_array[-1] == "anchor"
             puts "Correct!"
             @correct_counter += 1
-        elsif input == 0 && @game_array[-1] != "diamond"
+        elsif input == 0 && @game_array[-1] != "anchor"
             puts "Correct!"
             @correct_counter += 1
-        elsif input == 1 && @game_array[-1] != "diamond"
+        elsif input == 1 && @game_array[-1] != "anchor"
             puts "incorrect!"
             @incorrect_counter += 1
-        elsif input == 0 && @game_array == "diamond"
+        elsif input == 0 && @game_array == "anchor"
             puts "incorrect!"
             @incorrect_counter += 1
         #want to put an argument error here to raise an error and also attempt to retry the question
         else
             puts "invalid"
         end
-        @game_array.push "diamond"
+        @game_array.push "anchor"
   end
 
   def draw_shell
@@ -290,25 +290,25 @@ class Game
         @game_array.push "circle"
   end
 
-  def draw_heart
+  def draw_turtle
     input = gets.chomp.to_i
-        if input == 1 && @game_array[-1] == "heart"
+        if input == 1 && @game_array[-1] == "turtle"
             puts "Correct!"
             @correct_counter += 1
-        elsif input == 0 && @game_array[-1] != "heart"
+        elsif input == 0 && @game_array[-1] != "turtle"
             puts "Correct!"
             @correct_counter += 1
-        elsif input == 1 && @game_array[-1] != "heart"
+        elsif input == 1 && @game_array[-1] != "turtle"
             puts "incorrect!"
             @incorrect_counter += 1
-        elsif input == 0 && @game_array == "heart"
+        elsif input == 0 && @game_array == "turtle"
             puts "incorrect!"
             @incorrect_counter += 1
         #want to put an argument error here to raise an error and also attempt to retry the question
         else
             puts "invalid"
         end
-        @game_array.push "heart"
+        @game_array.push "turtle"
   end
 
   
@@ -317,12 +317,12 @@ class Game
         20.times do
             rand_symbol
             input = gets.chomp.to_i
-            if rand_symbol == Art::square
-                draw_square
-            elsif rand_symbol == Art::diamond
-                draw_diamond
-            elsif rand_symbol == Art::heart
-                draw_heart
+            if rand_symbol == Art::starfish
+                draw_starfish
+            elsif rand_symbol == Art::anchor
+                draw_anchor
+            elsif rand_symbol == Art::turtle
+                draw_turtle
             elsif rand_symbol == Art::shell
                 draw_shell
             else
