@@ -17,7 +17,7 @@
 
 require 'colorize'
 # require_relative 'testing.rb'
-require_relative 'game.rb'
+require_relative 'game'
 require 'tty-prompt'
 
 #
@@ -52,106 +52,6 @@ end
 
 #------------------ART STYLES-----------------------------
 
-def circle
-    clear_screen
-    empty_border(3)
-    puts "                          
-                                                           
-
-                    ▄▄▓▓▓▓▓▓▄▄                   
-               ▄▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓              
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓            
-          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          
-        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓        
-       ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓       
-      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      
-      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌     
-     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓     
-     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓     
-     ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌     
-      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      
-      ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌      
-       ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀       
-         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀        
-          ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀          
-             ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀▀            
-                ▀▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀▀                
-                       ^▀▀▀                       
-
-                                                  ".colorize(:green)
-end
-
-def square
-    clear_screen
-    empty_border(3)
-    puts "   
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-    ".colorize(:magenta)
-end
-
-def diamond
-    clear_screen
-    empty_border(3)
-    puts "                                                                    
-                        ▓▓                        
-                       ▓▓▓▓                       
-                      ▓▓▓▓▓▓                      
-                    ▓▓▓▓▓▓▓▓▓▓                    
-                   ▓▓▓▓▓▓▓▓▓▓▓▓                  
-                 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                 
-               ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓               
-             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓            
-          ▄▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌          
-        ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀        
-           ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀           
-              ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀             
-                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀               
-                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀                 
-                   ▀▓▓▓▓▓▓▓▓▓▓▀                   
-                     ▓▓▓▓▓▓▓▓▀                    
-                      ▓▓▓▓▓▓                      
-                       ▀▓▓▓                       
-                        ▀▓                        
-
-                                                  ".colorize(:cyan)
-end
-
-def heart
-    clear_screen
-    empty_border(3)
-    puts "
-                                                  
-            ▄▓▓▓▓▓▓▓▄        ╓▓▓▓▓▓▓▓▄       
-        ,▓▓▓▓▓▓▓▓▓▓▓▓▓▄   ╓▓▓▓▓▓▓▓▓▓▓▓▓▓▄    
-        ▄▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   
-        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌  
-        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌  
-        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌  
-        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   
-         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓    
-          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓     
-           ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓      
-            ^▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀       
-              █▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀         
-                ▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▀           
-                  ▀▓▓▓▓▓▓▓▓▓▓▓▓▀             
-                    ^▀▓▓▓▓▓▓▓▀               
-                       █▓▓▀                  
-                                         ".colorize(:red)
-end
-
 #--------------GAME METHODS-----------------------------
 
 def pause
@@ -176,9 +76,10 @@ def welcome
     
     border
     type_slow("Hi #{$user_name}, get excited to train your brain!")
+    pause
     prompt1 = TTY::Prompt.new
     prompt1.keypress("------------------------ PRESS ANY KEY TO CONTINUE --------------------------\n
-                            Game begins automatically in :countdown ...".colorize(:red), timeout: 5)
+                            Taking you to the menu in :countdown ...".colorize(:red), timeout: 5)
 end
 
 
@@ -186,21 +87,22 @@ end
 #                    MENU SCREEN                    #
 #----------------------------------------------------
 
-def menu
+# def menu
     
-    centre_text("  PRESS 1 |  PRESS 2   | PRESS 3\n")
-    puts "  #{"P L A Y".colorize(:cyan)} | #{"SEE STATS  ".colorize(:red)}| #{"E X I T".colorize(:magenta)}"
+    # centre_text("  PRESS 1 |  PRESS 2   | PRESS 3\n")
+    # puts "  #{"P L A Y".colorize(:cyan)} | #{"SEE STATS  ".colorize(:red)}| #{"E X I T".colorize(:magenta)}"
     
-end
+# end
 
 
 def main_menu
+  clear_screen
   border
       prompt2 = TTY::Prompt.new(active_color: :cyan)
       @prompt2menu = [
                   {"P L A Y" => -> do Game.new end},
                  #{'Show High Scores' => -> do high_scores end },
-                  {"H E L P" => -> do help_menu end},
+                  {"S T A T S" => -> do puts "weeee" end},
                   {"E X I T" => -> do exit end}
                    ]
       prompt2.select('Use ↑/↓ arrow keys, press Enter to select', @prompt2menu, help: " ", )
@@ -226,15 +128,12 @@ clear_screen
 welcome
 
 
-
 $play_counter = 0
 
 game = true
 while game == true
     main_menu 
     selection = gets.chomp.to_i
-
-    
     if selection == 1
         game = Game.new
 
@@ -248,7 +147,7 @@ while game == true
     end
    
 end
- 
+
     
 
 
