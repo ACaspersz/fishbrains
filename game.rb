@@ -192,6 +192,7 @@ class Game
                 puts "Don't worry.... "
                 type_slow('You can always start over')
                 puts "\n"
+                pause
             end
     main_menu
     end
