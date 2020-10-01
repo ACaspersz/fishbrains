@@ -1,8 +1,10 @@
-require './art/shell'
-require './art/turtle'
-require './art/starfish'
-require './art/anchor'
+require './views/art/shell'
+require './views/art/turtle'
+require './views/art/starfish'
+require './views/art/anchor'
+require './views/views'
 require 'io/console'
+
 
 
 
@@ -17,39 +19,33 @@ class Game
         start_screen
         play_game               
     end
-    def clear_screen
-        system('clear')
-        end
-    
-    def pause
-      sleep(2)
-    end
 
-
-    def type_slow(words)
-        words.each_char { |char| 
-        print char
-        sleep(0.02)
-        }
-        print "\n"
-    end
 
     def start_screen
         prompt3 = TTY::Prompt.new
         prompt3.keypress("
             Game begins in :countdown ...".colorize(:red), timeout: 5)
-clear_screen
+        Views::clear_screen
     end
 
+    def countdown(seconds)
+        date1 = Time.now + seconds
+        while Time.now < date1
+          t = Time.at(date1.to_i - Time.now.to_i)
+          puts t.strftime('%M:%S')
+          sleep 1
+        end 
+      end
+
     def self.welcome_message
-      type_slow("Welcome to the Memory Game Start Point!")
-      type_slow("To win, match all symbols with the symbol IMMEDIATELY PREVIOUS TO IT.")
-      type_slow("If the symbol MATCHES the previous symbol, PRESS 1")
-      type_slow("If the symbol does NOT match, PRESS 0")
-      pause
+      Views::type_slow("Welcome to the Memory Game Start Point!")
+      Views::type_slow("To win, match all symbols with the symbol IMMEDIATELY PREVIOUS TO IT.")
+      Views::type_slow("If the symbol MATCHES the previous symbol, PRESS 1")
+      Views::type_slow("If the symbol does NOT match, PRESS 0")
+      Views::pause
       puts "You have 45 seconds!"
       puts "Please be as accurate and fast as you can"
-      pause
+      Views::pause
       prompt4 = TTY::Prompt.new
       prompt4.keypress("When you're ready, press any key to return to the main menu")
     end
@@ -127,7 +123,6 @@ clear_screen
   
   
     def play_game
-        
         starting = Process.clock_gettime(Process::CLOCK_MONOTONIC) 
         game_symbols = [
             Art::starfish,
@@ -137,11 +132,11 @@ clear_screen
         ]
         20.times do
             symbol = game_symbols.shuffle[0]
-            clear_screen
+            Views::clear_screen
             puts symbol
             if symbol == Art::starfish
                 draw_starfish
-                
+    
             elsif symbol == Art::anchor
                 draw_anchor
                 
@@ -157,18 +152,18 @@ clear_screen
         end
         ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
         @elapsed = (ending - starting).round(1)
-        type_slow("it took #{@elapsed} seconds to complete all symbols")
+        Views::type_slow("it took #{@elapsed} seconds to complete all symbols")
             if @correct_counter > 0
-                type_slow("You got a total of #{@correct_counter} correct!!\ WOOOOOO!!!")
+                Views::type_slow("You got a total of #{@correct_counter} correct!!\ WOOOOOO!!!")
             end
             if @incorrect_counter > 0
-                type_slow("You got #{@incorrect_counter} wrong though... :( :(")
+                Views::type_slow("You got #{@incorrect_counter} wrong though... :( :(")
                 sleep(1)
-                type_slow('.....')
+                Views::type_slow('.....')
                 puts "Don't worry.... "
-                type_slow('You can always start over')
+                Views::type_slow('You can always start over')
                 puts "\n"
-                pause
+                Views::pause
             end
             if @invalid_counter > 0
                 puts "There were #{@invalid_counter} entries"
