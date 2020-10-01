@@ -13,7 +13,7 @@
 # if user matches the shape, += 1 to correct array,
 # if user does not match a symbol, add 1 to error array.
 #----------GEMS------------------------------------------
-require_relative 'game'
+require_relative '.model/game'
 require_relative './views/views'
 
 require 'colorize'
@@ -63,7 +63,6 @@ while game == true
     selection = gets.chomp.to_i
     if selection == 1
         game = Game.new
-
     elsif selection == 2
         stats
     elsif selection == 3

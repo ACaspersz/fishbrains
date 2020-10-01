@@ -34,7 +34,7 @@ class Game
           t = Time.at(date1.to_i - Time.now.to_i)
           print "#{t.strftime('0:%S')} seconds left\b"
           sleep 1
-          Views::clear
+          
         end
       end
 
