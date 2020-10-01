@@ -1,3 +1,4 @@
+
 module Views
 
     def self.welcome_message

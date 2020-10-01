@@ -13,12 +13,12 @@
 # if user matches the shape, += 1 to correct array,
 # if user does not match a symbol, add 1 to error array.
 #----------GEMS------------------------------------------
-
+require_relative 'game'
+require_relative './views/views'
 
 require 'colorize'
-require_relative 'game'
 require 'tty-prompt'
-require_relative 'views/views'
+
 #
 #---------------------------------------------
  

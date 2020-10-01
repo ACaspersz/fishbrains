@@ -1,8 +1,8 @@
-require './views/art/shell'
-require './views/art/turtle'
-require './views/art/starfish'
-require './views/art/anchor'
-require './views/views'
+require_relative './views/art/shell'
+require_relative './views/art/turtle'
+require_relative './views/art/starfish'
+require_relative './views/art/anchor'
+require_relative './views/views'
 require 'io/console'
 
 
@@ -28,28 +28,6 @@ class Game
         Views::clear_screen
     end
 
-    def countdown(seconds)
-        date1 = Time.now + seconds
-        while Time.now < date1
-          t = Time.at(date1.to_i - Time.now.to_i)
-          puts t.strftime('%M:%S')
-          sleep 1
-        end 
-      end
-
-    def self.welcome_message
-      Views::type_slow("Welcome to the Memory Game Start Point!")
-      Views::type_slow("To win, match all symbols with the symbol IMMEDIATELY PREVIOUS TO IT.")
-      Views::type_slow("If the symbol MATCHES the previous symbol, PRESS 1")
-      Views::type_slow("If the symbol does NOT match, PRESS 0")
-      Views::pause
-      puts "You have 45 seconds!"
-      puts "Please be as accurate and fast as you can"
-      Views::pause
-      prompt4 = TTY::Prompt.new
-      prompt4.keypress("When you're ready, press any key to return to the main menu")
-    end
-  
 
   def draw_starfish
     input = STDIN.getch.to_i
@@ -123,14 +101,15 @@ class Game
   
   
     def play_game
-        starting = Process.clock_gettime(Process::CLOCK_MONOTONIC) 
+
         game_symbols = [
             Art::starfish,
             Art::shell,
             Art::turtle,
             Art::anchor
         ]
-        20.times do
+        date1 = Time.now + 45
+        while Time.now < date1 do
             symbol = game_symbols.shuffle[0]
             Views::clear_screen
             puts symbol
@@ -150,9 +129,7 @@ class Game
                 puts "invalid at the loop level"
             end
         end
-        ending = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-        @elapsed = (ending - starting).round(1)
-        Views::type_slow("it took #{@elapsed} seconds to complete all symbols")
+            puts "FINISHED!!"
             if @correct_counter > 0
                 Views::type_slow("You got a total of #{@correct_counter} correct!!\ WOOOOOO!!!")
             end
