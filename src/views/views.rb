@@ -41,9 +41,7 @@ module Views
         puts " "
     end
 
-    def self.centre_text(string)
-        puts string.lines.map { |string| string.center(30)}.join("\n")
-    end
+    
 
     def self.welcome
         border

@@ -1,27 +1,39 @@
-require_relative './views/art/shell'
-require_relative './views/art/turtle'
-require_relative './views/art/starfish'
-require_relative './views/art/anchor'
-require_relative './views/views'
+require_relative '../views/art/shell'
+require_relative '../views/art/turtle'
+require_relative '../views/art/starfish'
+require_relative '../views/art/anchor'
+require_relative '../views/views'
 require 'io/console'
 
 
-
-
 class Game
-    attr_accessor :play_game, :welcome_message
+    attr_reader :initialize
 
     def initialize
         @correct_counter = 0
         @incorrect_counter = 0
         @invalid_counter = 0
         @game_array = []
+        @response_times = []
         start_screen
         thread              
     end
 
 
     def start_screen
+        puts "Your first symbol is!"
+        init_array = ["shell", "starfish", "anchor", "turtle"]
+        first_symbol = init_array.shuffle[0]
+            if first_symbol == "starfish"
+                puts Art::starfish
+            elsif first_symbol == "shell"
+                puts Art::shell
+            elsif first_symbol == "anchor"
+                puts Art::anchor
+            else first_symbol == "turtle"
+                puts Art::turtle
+            end
+        @game_array << first_symbol
         prompt3 = TTY::Prompt.new
         prompt3.keypress("
             Game begins in :countdown ...".colorize(:red), timeout: 5)
@@ -58,6 +70,8 @@ class Game
 
   def draw_anchor
     input = STDIN.getch.to_i
+        # end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+
         if input == 1 && @game_array[-1] == "anchor"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "anchor"
@@ -75,6 +89,7 @@ class Game
 
   def draw_shell
     input = STDIN.getch.to_i
+    # end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
         if input == 1 && @game_array[-1] == "shell"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "shell"
@@ -93,6 +108,7 @@ class Game
 
   def draw_turtle
     input = STDIN.getch.to_i
+    # end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
         if input == 1 && @game_array[-1] == "turtle"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "turtle"
@@ -109,31 +125,29 @@ class Game
   end
 
   def thread
-    puts "Started At #{Time.now}"
-t1 = Thread.new{countdown(15)}
+t1 = Thread.new{countdown(30)}
 t2 = Thread.new{play_game()}
 t1.join
 t2.join
-puts "End at #{Time.now}"
   end
 
   
     def play_game
-
-        game_symbols = [
+        @game_symbols = [
             Art::starfish,
             Art::shell,
             Art::turtle,
             Art::anchor
         ]
-        date1 = Time.now + 15
+        date1 = Time.now + 30
         while Time.now < date1 do
-            symbol = game_symbols.shuffle[0]
+            symbol = @game_symbols.shuffle[0]
+            # start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
             Views::clear_screen
             puts symbol
             if symbol == Art::starfish
                 draw_starfish
-    
+                
             elsif symbol == Art::anchor
                 draw_anchor
                 
@@ -146,6 +160,7 @@ puts "End at #{Time.now}"
             else
                 puts "invalid at the loop level"
             end
+            # @response_times << [end_time - start_time]
         end
             puts "FINISHED!!"
             if @correct_counter > 0

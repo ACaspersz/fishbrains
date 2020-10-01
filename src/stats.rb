@@ -1,7 +1,7 @@
 class Stats
 
-    def initialise
-        
+    def initialize
+
     end
 
 end

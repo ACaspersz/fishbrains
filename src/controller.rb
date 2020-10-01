@@ -13,7 +13,7 @@
 # if user matches the shape, += 1 to correct array,
 # if user does not match a symbol, add 1 to error array.
 #----------GEMS------------------------------------------
-require_relative '.model/game'
+require_relative './model/game'
 require_relative './views/views'
 
 require 'colorize'
@@ -32,7 +32,7 @@ def main_menu
                   {"P L A Y" => -> do Game.new end},
                  #{'Show High Scores' => -> do high_scores end },
                   {"T U T O R I A L" => -> do Views::welcome_message end},
-                  {"S T A T S" => -> do puts "nothing here yet" end},
+                  {"S T A T S" => -> do Stats end},
                   {"E X I T" => -> do exit end}
                    ]
       prompt2.select('Use ↑/↓ arrow keys, press Enter to select', @prompt2menu, help: " ", )
