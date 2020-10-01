@@ -16,7 +16,6 @@
 
 
 require 'colorize'
-# require_relative 'testing.rb'
 require_relative 'game'
 require 'tty-prompt'
 
@@ -25,7 +24,7 @@ require 'tty-prompt'
  
 
 def border
-    puts "*".colorize(:green)*50
+    puts "*".colorize(:green)*70
 end
 
 def empty_border(number) 
@@ -96,7 +95,6 @@ def welcome
                            ▀▀█▄╖,,      ,,,╥▄█▀▀               ▀▄▓▌         
 
  ".colorize(:light_red)
- pause
     puts "
     
 ███████╗██╗███████╗██╗  ██╗    ██████╗ ██████╗  █████╗ ██╗███╗   ██╗███████╗

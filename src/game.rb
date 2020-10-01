@@ -2,11 +2,12 @@ require './art/shell'
 require './art/turtle'
 require './art/starfish'
 require './art/anchor'
-require 'highline'
+require 'io/console'
+
 
 
 class Game
-    attr_accessor :play_game, :correct_answers, :wrong_answers, :welcome_message
+    attr_accessor :play_game, :welcome_message
 
     def initialize
         @correct_counter = 0
@@ -41,7 +42,6 @@ clear_screen
     end
 
     def self.welcome_message
-      
       type_slow("Welcome to the Memory Game Start Point!")
       type_slow("To win, match all symbols with the symbol IMMEDIATELY PREVIOUS TO IT.")
       type_slow("If the symbol MATCHES the previous symbol, PRESS 1")
@@ -50,42 +50,13 @@ clear_screen
       puts "You have 45 seconds!"
       puts "Please be as accurate and fast as you can"
       pause
-      puts "Please press any key to return to main menu"
+      prompt4 = TTY::Prompt.new
+      prompt4.keypress("When you're ready, press any key to return to the main menu")
     end
-  
-    
-  
-    # def char_if_pressed
-    #     begin
-    #      system("stty raw -echo") # turn raw input on
-    #      c = nil
-    #      if $stdin.ready?
-    #        c = $stdin.getc
-    #      end
-    #      c.chr if c
-    #    ensure
-    #      system "stty -raw echo" # turn raw input off
-    #    end
-    # end
-      
-    #  while true
-    #    c = char_if_pressed
-    #    puts "[#{c}]" if c
-    #    sleep 1
-    #    puts "tick"
-    #  end
-
-    def raw_no_echo_mode_exec
-        raw_no_echo_mode
-        yield
-      ensure
-        restore_mode
-      end
-
   
 
   def draw_starfish
-    input = gets.chomp.to_i
+    input = STDIN.getch.to_i
         if input == 1 && @game_array[-1] == "starfish"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "starfish"
@@ -102,7 +73,7 @@ clear_screen
   end
 
   def draw_anchor
-    input = gets.chomp.to_i
+    input = STDIN.getch.to_i
         if input == 1 && @game_array[-1] == "anchor"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "anchor"
@@ -119,7 +90,7 @@ clear_screen
   end
 
   def draw_shell
-    input = gets.chomp.to_i
+    input = STDIN.getch.to_i
         if input == 1 && @game_array[-1] == "shell"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "shell"
@@ -137,7 +108,7 @@ clear_screen
   end
 
   def draw_turtle
-    input = gets.chomp.to_i
+    input = STDIN.getch.to_i
         if input == 1 && @game_array[-1] == "turtle"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "turtle"
@@ -156,7 +127,7 @@ clear_screen
   
   
     def play_game
-        include highline
+        
         starting = Process.clock_gettime(Process::CLOCK_MONOTONIC) 
         game_symbols = [
             Art::starfish,
@@ -166,19 +137,20 @@ clear_screen
         ]
         20.times do
             symbol = game_symbols.shuffle[0]
+            clear_screen
             puts symbol
             if symbol == Art::starfish
                 draw_starfish
-                clear_screen
+                
             elsif symbol == Art::anchor
                 draw_anchor
-                clear_screen
+                
             elsif symbol == Art::turtle
                 draw_turtle
-                clear_screen
+                
             elsif symbol == Art::shell
                 draw_shell
-                clear_screen
+    
             else
                 puts "invalid at the loop level"
             end
