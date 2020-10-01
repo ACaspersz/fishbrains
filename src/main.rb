@@ -132,16 +132,17 @@ end
 
 def main_menu
   clear_screen
-  border
+  
       prompt2 = TTY::Prompt.new(active_color: :cyan)
       @prompt2menu = [
                   {"P L A Y" => -> do Game.new end},
                  #{'Show High Scores' => -> do high_scores end },
-                  {"S T A T S" => -> do puts "weeee" end},
+                  {"T U T O R I A L" => -> do Game::welcome_message end},
+                  {"S T A T S" => -> do puts "nothing here yet" end},
                   {"E X I T" => -> do exit end}
                    ]
       prompt2.select('Use ↑/↓ arrow keys, press Enter to select', @prompt2menu, help: " ", )
-border
+
 end #def main_menu end#
 
 

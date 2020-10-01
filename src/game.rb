@@ -4,14 +4,17 @@ require './art/starfish'
 require './art/anchor'
 
 class Game
-    attr_accessor :play, :correct_answers, :wrong_answers
+    attr_accessor :play_game, :correct_answers, :wrong_answers, :welcome_message
+
+    
 
     def initialize
         @correct_counter = 0
         @incorrect_counter = 0
         @game_array = []
-        welcome_message
-        play_game                  
+        start_screen
+        play_game
+        main_menu               
     end
     def clear_screen
         system('clear')
@@ -30,7 +33,14 @@ class Game
         print "\n"
     end
 
-    def welcome_message
+    def start_screen
+        prompt3 = TTY::Prompt.new
+        prompt3.keypress("
+            Game begins in :countdown ...".colorize(:red), timeout: 5)
+clear_screen
+    end
+
+    def self.welcome_message
       
       type_slow("Welcome to the Memory Game Start Point!")
       type_slow("To win, match all symbols with the symbol IMMEDIATELY PREVIOUS TO IT.")
@@ -40,10 +50,7 @@ class Game
       puts "You have 45 seconds!"
       puts "Please be as accurate and fast as you can"
       pause
-      prompt3 = TTY::Prompt.new
-    prompt3.keypress("
-                            Game begins in :countdown ...".colorize(:red), timeout: 5)
-        clear_screen
+      puts "Please press any key to return to main menu"
     end
   
     
@@ -205,16 +212,23 @@ class Game
 #     - The user then needs to decide whether the symbol/image matches the previous one or NOT
 #     - We want to tally the score as they go
     
-  def rand_symbol
-    symbols = [
-      Art::starfish,
-      Art::shell,
-      Art::turtle,
-      Art::anchor
-    ]
-    random_symbol = symbols.shuffle[0]
-    puts random_symbol
-  end
+#   def rand_symbol
+#     symbols = [
+#       Art::starfish,
+#       Art::shell,
+#       Art::turtle,
+#       Art::anchor
+#     ]
+#     random_symbol = symbols.sample
+#     # puts random_symbol
+#   end
+
+#   def compare_symbols
+#       2.times do
+#           puts rand_symbol
+#       end
+#       gets.chomp
+#   end
 
 #   def compare_and_display_symbols
 #     rand_symbol1 = rand_symbol
@@ -313,24 +327,54 @@ class Game
 
   
 
-  def play_game
+#   def play_game
+#         20.times do
+#             rand_symbol
+#             if rand_symbol == Art::starfish
+#                 draw_starfish
+#             elsif rand_symbol == Art::anchor
+#                 draw_anchor
+#             elsif rand_symbol == Art::turtle
+#                 draw_turtle
+#             elsif rand_symbol == Art::shell
+#                 draw_shell
+#             else
+#                 puts "invalid at the loop level"
+            
+#             end
+#         end
+#     end
+
+  # TEST CODE BELOW
+  
+    def play_game
+        game_symbols = [
+            Art::starfish,
+            Art::shell,
+            Art::turtle,
+            Art::anchor
+        ]
         20.times do
-            rand_symbol
-            input = gets.chomp.to_i
-            if rand_symbol == Art::starfish
+            symbol = game_symbols.shuffle[0]
+            puts symbol
+            if symbol == Art::starfish
                 draw_starfish
-            elsif rand_symbol == Art::anchor
+                clear_screen
+            elsif symbol == Art::anchor
                 draw_anchor
-            elsif rand_symbol == Art::turtle
+                clear_screen
+            elsif symbol == Art::turtle
                 draw_turtle
-            elsif rand_symbol == Art::shell
+                clear_screen
+            elsif symbol == Art::shell
                 draw_shell
+                clear_screen
             else
                 puts "invalid at the loop level"
-            
             end
         end
     end
+    # TEST CODE ABOVE
 end
   
   

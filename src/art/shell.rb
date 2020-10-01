@@ -1,8 +1,8 @@
 module Art
     def self.shell
-        clear_screen
-        empty_border(3)
-        puts "                          
+        # clear_screen
+        # empty_border(3)
+        "                          
                                                                                                                                                                                                               
                                   ╓▄▓▓▓▄▓▓▓▄                                    
                       ,▄▄▓▓▓▓▓▓▓▓▓▓▓▓▓█▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄,                        
