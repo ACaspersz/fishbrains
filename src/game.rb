@@ -17,7 +17,7 @@ class Game
         @invalid_counter = 0
         @game_array = []
         start_screen
-        play_game               
+        thread              
     end
 
 
@@ -27,6 +27,16 @@ class Game
             Game begins in :countdown ...".colorize(:red), timeout: 5)
         Views::clear_screen
     end
+
+    def countdown(seconds)
+        date1 = Time.now + seconds
+        while Time.now < date1
+          t = Time.at(date1.to_i - Time.now.to_i)
+          print "#{t.strftime('0:%S')} seconds left\b"
+          sleep 1
+          Views::clear
+        end
+      end
 
 
   def draw_starfish
@@ -98,7 +108,15 @@ class Game
         @game_array.push "turtle"
   end
 
-  
+  def thread
+    puts "Started At #{Time.now}"
+t1 = Thread.new{countdown(15)}
+t2 = Thread.new{play_game()}
+t1.join
+t2.join
+puts "End at #{Time.now}"
+  end
+
   
     def play_game
 
@@ -108,7 +126,7 @@ class Game
             Art::turtle,
             Art::anchor
         ]
-        date1 = Time.now + 45
+        date1 = Time.now + 15
         while Time.now < date1 do
             symbol = game_symbols.shuffle[0]
             Views::clear_screen
