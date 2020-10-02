@@ -35,6 +35,7 @@ class Game
             else first_symbol == "turtle"
                 puts Art::turtle
             end
+
         @game_array << first_symbol
         prompt3 = TTY::Prompt.new
         prompt3.keypress("
@@ -52,76 +53,21 @@ class Game
         end
       end
 
-
-  def draw_starfish
+  def symbol_choice(symbol)
     input = STDIN.getch.to_i
-        if input == 1 && @game_array[-1] == "starfish"
-            @correct_counter += 1
-        elsif input == 0 && @game_array[-1] != "starfish"
-            @correct_counter += 1
-        elsif input == 1 && @game_array[-1] != "starfish"
-            @incorrect_counter += 1
-        elsif input == 0 && @game_array == "starfish"
-            @incorrect_counter += 1
-        #want to put an argument error here to raise an error and also attempt to retry the question
-        else
-            @invalid_counter += 1
-        end
-        @game_array.push "starfish"
-  end
-
-  def draw_anchor
-    input = STDIN.getch.to_i
-
-        if input == 1 && @game_array[-1] == "anchor"
-            @correct_counter += 1
-        elsif input == 0 && @game_array[-1] != "anchor"
-            @correct_counter += 1
-        elsif input == 1 && @game_array[-1] != "anchor"
-            @incorrect_counter += 1
-        elsif input == 0 && @game_array == "anchor"
-            @incorrect_counter += 1
-        #want to put an argument error here to raise an error and also attempt to retry the question
-        else
-            @invalid_counter += 1
-        end
-        @game_array.push "anchor"
-  end
-
-  def draw_shell
-    input = STDIN.getch.to_i
-        if input == 1 && @game_array[-1] == "shell"
-            @correct_counter += 1
-        elsif input == 0 && @game_array[-1] != "shell"
-            @correct_counter += 1
-        elsif input == 1 && @game_array[-1] != "shell"
-            @incorrect_counter += 1
-        elsif input == 0 && @game_array[-1] == "shell"
-            
-            @incorrect_counter += 1
-        #want to put an argument error here to raise an error and also attempt to retry the question
-        else
-            @invalid_counter += 1
-        end
-        @game_array.push "circle"
-  end
-
-  def draw_turtle
-    input = STDIN.getch.to_i
-    
-        if input == 1 && @game_array[-1] == "turtle"
-            @correct_counter += 1
-        elsif input == 0 && @game_array[-1] != "turtle"
-            @correct_counter += 1
-        elsif input == 1 && @game_array[-1] != "turtle"
-            @incorrect_counter += 1
-        elsif input == 0 && @game_array == "turtle"
-            @incorrect_counter += 1
-        #want to put an argument error here to raise an error and also attempt to retry the question
-        else
-            @invalid_counter += 1
-        end
-        @game_array.push "turtle"
+    if input == 1 && @game_array[-1] == symbol
+        @correct_counter += 1
+    elsif input == 0 && @game_array[-1] != symbol
+        @correct_counter += 1
+    elsif input == 1 && @game_array[-1] != symbol
+        @incorrect_counter += 1
+    elsif input == 0 && @game_array == symbol
+        @incorrect_counter += 1
+    #want to put an argument error here to raise an error and also attempt to retry the question
+    else
+        @invalid_counter += 1
+    end
+    @game_array << symbol
   end
 
   def thread
@@ -160,47 +106,34 @@ class Game
             Views::clear_screen
             puts symbol
             if symbol == Art::starfish
-                draw_starfish
-                
-
+                symbol_choice("starfish")
+            
             elsif symbol == Art::anchor
-                draw_anchor
+                symbol_choice("anchor")
                 
             elsif symbol == Art::turtle
-                draw_turtle
+                symbol_choice("turtle")
                 
             elsif symbol == Art::shell
-                draw_shell
+                symbol_choice("shell")
     
             else
                 puts "invalid at the loop level"
             end
             end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-            # @response_times << [end_time - start_time] the issue here was that reduce wasn't working because
-            # the elements in the main array were in arrays themselves. Just had to remove the brackets
             @response_times << end_time - start_time
         end
             puts "FINISHED!!"
-            # if @correct_counter > 0
-            #     Views::type_slow("You got a total of #{@correct_counter} correct!!\ WOOOOOO!!!")
-            # end
-            # if @incorrect_counter > 0
-            #     Views::type_slow("You got #{@incorrect_counter} wrong though... :( :(")
-            #     sleep(1)
-            #     Views::type_slow('.....')
-            #     puts "Don't worry.... "
-            #     Views::type_slow('You can always start over')
-            #     puts "\n"
-            #     Views::pause
-            # end
-            # if @invalid_counter > 0
-            #     puts "There were #{@invalid_counter} invalid entries"
-            # end
+            
+            puts "Correct counter is #{@correct_counter}."
+            puts "incorrect counter is #{@incorrect_counter}."
+            puts "Invalid counter is #{@invalid_counter}."
             puts "The score is #{score_calc}."
-            puts "The number of correct answers is #{@correct_counter}."
-            puts "The average response time was #{average_response}."
-            prompt5 = TTY::Prompt.new
-            prompt5.keypress("Press enter to return to the main menu.")
+            prompt = TTY::Prompt.new.select("\n\nWhat would you like to do?".colorize(:light_yellow), help: '') do |menu|
+                menu.choice "Start New Game".colorize(:light_green), true
+                menu.choice "Exit to Main Menu".colorize(:light_red), false
+            end
+    
     end
 end
 
