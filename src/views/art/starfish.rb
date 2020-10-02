@@ -1,7 +1,6 @@
 module Art
     def self.starfish
-        # clear_screen
-        # empty_border(3)
+        
         "   
                                        ,,                                       
                                      ,▓▓▓▓                                      

@@ -1,3 +1,4 @@
+require_relative './options_view'
 
 module Views
 
@@ -11,7 +12,7 @@ module Views
         puts "You have 45 seconds!"
         puts "Please be as accurate and fast as you can"
         pause
-        # need to return to a menu here!
+        Options::return_menu
     end
 
     def self.clear_screen
@@ -95,5 +96,9 @@ module Views
         prompt1.keypress("------------------------ PRESS ANY KEY TO CONTINUE --------------------------\n
                                 Taking you to the menu in :countdown ...".colorize(:red), timeout: 5)
     end
+
+    
+
+    
 
 end

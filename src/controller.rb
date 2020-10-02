@@ -3,7 +3,7 @@
 require_relative './model/game'
 require_relative './views/views'
 # require_relative './views/highscores'
-require_relative 'options_view'
+require_relative './views/options_view'
 require 'colorize'
 require 'tty-prompt'
 

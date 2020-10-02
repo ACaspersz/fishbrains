@@ -1,18 +1,29 @@
 
 require 'yaml'
+require_relative 'highscores'
 
 module Stats
-attr_reader 
-
-# def average_response(@response_times)
-# average = @response_times
-# return list.reduce(:+).to_f / list.size
-# end
-
-# def score_gen(@correct_counter, @incorrect_counter, @response_times)
+    @games = YAML.load(File.read("src/game_stats.yml")) rescue [] 
     
-end
+    class << self
+        def map
+            @games.map { |game_ary| yield game_ary }
+        end
 
+        def next_id
+            @games.length + 1
+        end
+
+        def save(game)
+            game.id = next_id
+            @games << game
+            File.open("src/game_stats", "w") { |file| file.write(@games.to_yaml) }
+        end
+    end
+
+    def save!
+        self.class.save(self)
+    end
 
 end
 
