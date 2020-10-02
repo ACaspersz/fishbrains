@@ -3,7 +3,9 @@ require_relative '../views/art/turtle'
 require_relative '../views/art/starfish'
 require_relative '../views/art/anchor'
 require_relative '../views/views'
+require_relative 'stats'
 require 'io/console'
+require 'yaml'
 
 
 class Game
@@ -142,12 +144,13 @@ t2.join
         date1 = Time.now + 30
         while Time.now < date1 do
             symbol = @game_symbols.shuffle[0]
-            # start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+            start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
             Views::clear_screen
             puts symbol
             if symbol == Art::starfish
                 draw_starfish
                 
+
             elsif symbol == Art::anchor
                 draw_anchor
                 
@@ -160,7 +163,8 @@ t2.join
             else
                 puts "invalid at the loop level"
             end
-            # @response_times << [end_time - start_time]
+            end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+            @response_times << [end_time - start_time]
         end
             puts "FINISHED!!"
             if @correct_counter > 0
@@ -178,7 +182,8 @@ t2.join
             if @invalid_counter > 0
                 puts "There were #{@invalid_counter} entries"
             end
-   main_menu
+            prompt5 = TTY::Prompt.new
+            prompt5.keypress("Press enter to return to the main menu.")
     end
 end
 

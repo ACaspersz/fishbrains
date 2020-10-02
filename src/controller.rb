@@ -60,19 +60,20 @@ Views::welcome
 game = true
 while game == true
     main_menu 
-    selection = gets.chomp.to_i
-    if selection == 1
-        game = Game.new
-    elsif selection == 2
-        stats
-    elsif selection == 3
-        game = false
-        exit
-    else 
-        puts "Incorrect value"
-    end
-   
 end
+#     selection = gets.chomp.to_i
+#     if selection == 1
+#         game = Game.new
+#     elsif selection == 2
+#         stats
+#     elsif selection == 3
+#         game = false
+#         exit
+#     else 
+#         puts "Incorrect value"
+#     end
+   
+# end
 
     
 
