@@ -11,6 +11,7 @@ module Views
         puts "You have 45 seconds!"
         puts "Please be as accurate and fast as you can"
         pause
+        # need to return to a menu here!
     end
 
     def self.clear_screen

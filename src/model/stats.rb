@@ -9,7 +9,7 @@ average = @response_times
 return list.reduce(:+).to_f / list.size
 end
 
-def score_gen
+def score_gen(@correct_counter, @incorrect_counter, @response_times)
     
 end
 

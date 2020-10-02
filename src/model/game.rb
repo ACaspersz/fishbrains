@@ -3,13 +3,13 @@ require_relative '../views/art/turtle'
 require_relative '../views/art/starfish'
 require_relative '../views/art/anchor'
 require_relative '../views/views'
-require_relative 'stats'
+# require_relative 'stats'
 require 'io/console'
 require 'yaml'
 
 
 class Game
-    attr_reader :initialize
+    # attr_reader :initialize
 
     def initialize
         @correct_counter = 0
@@ -127,11 +127,22 @@ class Game
   end
 
   def thread
-t1 = Thread.new{countdown(30)}
-t2 = Thread.new{play_game()}
-t1.join
-t2.join
+    t1 = Thread.new{countdown(30)}
+    t2 = Thread.new{play_game()}
+    t1.join
+    t2.join
   end
+
+    def average_response
+        average = @response_times
+        return average.sum(0.00).to_f / average.size
+    end
+
+    def score_calc
+        game_score = @correct_counter * 100
+        average_response < 0.5 ? game_score*1.6 : game_score*1
+        return game_score
+    end
 
   
     def play_game
@@ -167,21 +178,25 @@ t2.join
             @response_times << [end_time - start_time]
         end
             puts "FINISHED!!"
-            if @correct_counter > 0
-                Views::type_slow("You got a total of #{@correct_counter} correct!!\ WOOOOOO!!!")
-            end
-            if @incorrect_counter > 0
-                Views::type_slow("You got #{@incorrect_counter} wrong though... :( :(")
-                sleep(1)
-                Views::type_slow('.....')
-                puts "Don't worry.... "
-                Views::type_slow('You can always start over')
-                puts "\n"
-                Views::pause
-            end
-            if @invalid_counter > 0
-                puts "There were #{@invalid_counter} entries"
-            end
+            # if @correct_counter > 0
+            #     Views::type_slow("You got a total of #{@correct_counter} correct!!\ WOOOOOO!!!")
+            # end
+            # if @incorrect_counter > 0
+            #     Views::type_slow("You got #{@incorrect_counter} wrong though... :( :(")
+            #     sleep(1)
+            #     Views::type_slow('.....')
+            #     puts "Don't worry.... "
+            #     Views::type_slow('You can always start over')
+            #     puts "\n"
+            #     Views::pause
+            # end
+            # if @invalid_counter > 0
+            #     puts "There were #{@invalid_counter} entries"
+            # end
+
+            puts score_calc
+            
+
             prompt5 = TTY::Prompt.new
             prompt5.keypress("Press enter to return to the main menu.")
     end
