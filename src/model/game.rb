@@ -72,7 +72,6 @@ class Game
 
   def draw_anchor
     input = STDIN.getch.to_i
-        # end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
         if input == 1 && @game_array[-1] == "anchor"
             @correct_counter += 1
@@ -91,7 +90,6 @@ class Game
 
   def draw_shell
     input = STDIN.getch.to_i
-    # end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
         if input == 1 && @game_array[-1] == "shell"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "shell"
@@ -110,7 +108,7 @@ class Game
 
   def draw_turtle
     input = STDIN.getch.to_i
-    # end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+    
         if input == 1 && @game_array[-1] == "turtle"
             @correct_counter += 1
         elsif input == 0 && @game_array[-1] != "turtle"
@@ -127,21 +125,24 @@ class Game
   end
 
   def thread
-    t1 = Thread.new{countdown(30)}
+    t1 = Thread.new{countdown(10)}
     t2 = Thread.new{play_game()}
     t1.join
     t2.join
   end
 
-    def average_response
-        average = @response_times
-        return average.sum(0.00).to_f / average.size
-    end
+  def average_response
+    @response_times.reduce(:+) / @response_times.length
+  end
+
 
     def score_calc
         game_score = @correct_counter * 100
-        average_response < 0.5 ? game_score*1.6 : game_score*1
-        return game_score
+        if self.average_response < 0.5  
+            game_score * 1.6.to_i
+        elsif average_response > 0.5
+            game_score * 1.to_i
+        end
     end
 
   
@@ -152,7 +153,7 @@ class Game
             Art::turtle,
             Art::anchor
         ]
-        date1 = Time.now + 30
+        date1 = Time.now + 10
         while Time.now < date1 do
             symbol = @game_symbols.shuffle[0]
             start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
@@ -175,7 +176,9 @@ class Game
                 puts "invalid at the loop level"
             end
             end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-            @response_times << [end_time - start_time]
+            # @response_times << [end_time - start_time] the issue here was that reduce wasn't working because
+            # the elements in the main array were in arrays themselves. Just had to remove the brackets
+            @response_times << end_time - start_time
         end
             puts "FINISHED!!"
             # if @correct_counter > 0
@@ -191,12 +194,11 @@ class Game
             #     Views::pause
             # end
             # if @invalid_counter > 0
-            #     puts "There were #{@invalid_counter} entries"
+            #     puts "There were #{@invalid_counter} invalid entries"
             # end
-
-            puts score_calc
-            
-
+            puts "The score is #{score_calc}."
+            puts "The number of correct answers is #{@correct_counter}."
+            puts "The average response time was #{average_response}."
             prompt5 = TTY::Prompt.new
             prompt5.keypress("Press enter to return to the main menu.")
     end
