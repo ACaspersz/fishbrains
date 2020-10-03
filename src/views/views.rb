@@ -2,8 +2,7 @@ require_relative './options_view'
 
 module Views
 
-    def self.welcome_message
-        
+    def self.game_howto
         type_slow("Welcome to the Memory Game Start Point!")
         type_slow("To win, match all symbols with the symbol IMMEDIATELY PREVIOUS TO IT.")
         type_slow("If the symbol MATCHES the previous symbol, PRESS 1")
@@ -11,7 +10,9 @@ module Views
         pause
         puts "You have 45 seconds!"
         puts "Please be as accurate and fast as you can"
-        pause
+        type_slow("Your score is calculated on how many you get right AND you get a bonus")
+        type_slow("for being FAST.")
+        type_slow("However, you do lose points for being incorrect, so watch out fishy!")
         Options::return_menu
     end
 

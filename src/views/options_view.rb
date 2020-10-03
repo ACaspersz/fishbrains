@@ -7,7 +7,7 @@ module Options
             prompt2 = TTY::Prompt.new(active_color: :cyan)
             @prompt2menu = [
                         {"P L A Y" => -> do Game.new end},
-                        {"T U T O R I A L" => -> do Views::welcome_message end},
+                        {"T U T O R I A L" => -> do Views::game_howto end},
                         {"S T A T S" => -> do puts "nothing here yet" end},
                         {"E X I T" => -> do exit end}
                          ]

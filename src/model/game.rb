@@ -79,10 +79,11 @@ class Game
   end  
   
   def score_calc
-        game_score = @correct_counter * 100
+        # adds up correct and incorrect counters and creates a score based on performance
+        game_score = (@correct_counter * 100) - (@incorrect_counter * 50)
         if self.average_response < 0.5  
             game_score * 1.6.to_i
-            #fast response bonus, increases score by 60%
+        # fast response bonus, increases overall score by 60%
         elsif average_response > 0.5
             game_score * 1.to_i
         end
@@ -126,7 +127,7 @@ class Game
             puts "FINISHED!!"
             puts "The score is #{score_calc}."
             sleep 2
-            puts ({$user_name => score_calc}.to_yaml)
+            {$user_name => score_calc}.to_yaml
             Options::return_menu
         
     end

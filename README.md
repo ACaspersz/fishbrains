@@ -29,25 +29,28 @@ The user will only require access to a Mac computer. Once the game is downloaded
 ### **R6: Features of the application**
 
 **1. User can input their name from the command line**.  
- After beginning the app, the user will be prompted to enter their name, which will be stored in ARGV if not already done so. If user does not complete name prompt, an argument error will be passed looping user back until this is completed. Username is then stored in a global variable which will be used later in the game to provide feedback and/or statistics on game play. 
+ After beginning the app, the user will be prompted to enter their name, which will be stored and used throught the application to personalise experience.
 
-**2. Menu Bar: Play game, Tutorials, Highscores, Exit**.  
- This feature prints a menu to the screen, allowing the user to navigate three choices of input: 
- - Play Game (which initiates a single round of the flash card game) 
- - Tutorial
- <!-- - Stats (which allows user to view highscores and also look at changes in individual player scores over time) and  -->
- - Exit   
- The menu method is called within a loop and can handle incorrect input if needed.
+**2. Main Menu: Play game, Tutorials, Highscores, Exit**.  
+ Includes the following:
+ - *Play Game*, which initiates a round of the flash card game. 
+ - *Tutorial*, which explains the rules of the game and how to play, including how the scores are calculated.
+ - *Highscores*, which allows user to view highscores from previous game play.
+ - *Exit*, to exit the application when finished. 
 
 **3. Play Game**   
-After seeing an instruction page on how to play the game, the player shown 40 ? symbols and need to indicate whether each symbol matches the last. Will be given < 45 sec countdown to match as many symbols as possible. Will record number of correct matches and also time taken to answer. Screen will flash green if correct and make a correct sound effect, and will beep incorrect and flash red if incorrect. Player will no longer be shown symbols at the end of the game and will be shown a screen with feedback from their gameplay, such as score, whether this is a personal best for the particular player (linked to username stats), and whether this is a top 5 high score. 
+- If selected from the main menu, game will be initiated. Player will be shown one of four symbols on screen which they will need to match to the previous shown symbol, in order to increase their score, until 45 seconds has passed. 
+- Will be given a 45 second countdown which will be visualised on screen as the game progresses. 
+- After 45 seconds, the game ends and the score will be given to user.  
+- User can then choose to play again or to return to the main menu.
 
-4. **Tutorial Screen**
+**4. Tutorial Screen**  
+If Tutorial is selected from the main menu, the player will be shown instructions on how to play the game, as well as how the score is calculated.
 
-<!-- 4. **Statistics Menu**: will record game score ? (number of errors/response time? or would numerical score be better). If same name, can compare to previous scores (and give a percentage increase or decrease?) can also record & store multiple different players. -->
+<!-- **4. High Scores**: If selected from the main menu, the High Scores function will display a TTY table of the top 5 scores recorded in previous game play.  -->
 
-5. **Sub-Options Menu**
-
+**5. Sub-Options Menu**  
+At the end of either the 'Play Game', 'High Scores' or 'Tutorial' screens, a sub-options menu will be shown with one of two options: 'Play again' or 'Return to main menu' which allows navigation to either of these options, and menus to be accessible from anywhere. 
 
 
 ### **R7: User interaction and experience**
@@ -58,11 +61,14 @@ Upon launching the game, the user's name will be captured. The user will be init
 **how the user will interact with / use each feature** 
 The user will need to input pre-determined commands into the terminal to interact with the app. The options menu will be present on the screen whenever a selection needs to be made. Each time a selection is made, 'tty-progressbar' will commence, followed by either ascii art or an ascii animation plus sound via mac-say to let the user know that something is happening.
 
+This feature prints a menu to the screen, allowing the user to navigate three choices of input using the up and down keys (via TTY-prompt gem function): 
+
+After seeing an instruction page on how to play the game, the player shown 40 ? symbols and need to indicate whether each symbol matches the last. Will be given < 45 sec countdown to match as many symbols as possible. Will record number of correct matches and also time taken to answer. Screen will flash green if correct and make a correct sound effect, and will beep incorrect and flash red if incorrect. Player will no longer be shown symbols at the end of the game and will be shown a screen with feedback from their gameplay, such as score, whether this is a personal best for the particular player (linked to username stats), and whether this is a top 5 high score. 
 **how errors will be handled by the application and displayed to the user**
 The application utilizes conditional loops and rescue and raise error statements. If the user enters an input that is invalid, they will see an error statement and if it occurs in the middle of gameplay, a sound and alert on the screen will indicate this.
 
 
-### R8: **Develop a diagram which describes the control flow of your application. Your diagram must:**
+### **R8: Develop a diagram which describes the control flow of your application. Your diagram must:**
 *- show the workflow/logic and/or integration of the features in your application for each feature*
 *- utilise a recognised format or set of conventions for a control flow diagram, such as UML.*
 
