@@ -107,7 +107,7 @@ If an invalid entry is entered during gameplay, user will be able to retry the s
 ### **R8: Control FLow**
 <br>
 
-![App Flowchart](docs/app-flow-diagram.jpg)
+![App Flowchart](docs/app-flow-diagram2.png)
 
 ### **R9: Implementation Plan**
 
