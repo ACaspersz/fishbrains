@@ -55,16 +55,20 @@ At the end of either the 'Play Game', 'High Scores' or 'Tutorial' screens, a sub
 
 ### **R7: User interaction and experience**
 
-**How the user will find out how to interact with / use each feature**   
-Upon launching the game, the user's name will be captured. The user will be initiated into the game by the welcome screen which will transition into the main menu options, which explains what actions and activities are available for the user to take. Additionally, each 
+**How the user will find out how to interact with / use each feature?**   
+- Upon launching the game, the user's name will be captured. 
+- The user will be initiated into the game by the welcome screen which will transition into the main menu, which uses up down keys for movement through selections and enter to select. The selection will be highlighted when it is been hovered over to assist the player to navigate the menu. 
+- Each screen that the user navigates to will have text that instructs them of the purpose of the page.
+-Each screen has a sub-options menu that allows navigation back to other pages which are clearly indicated. 
 
-**how the user will interact with / use each feature** 
+**How will the user interact with / use each feature?**   
 The user will need to input pre-determined commands into the terminal to interact with the app. The options menu will be present on the screen whenever a selection needs to be made. Each time a selection is made, 'tty-progressbar' will commence, followed by either ascii art or an ascii animation plus sound via mac-say to let the user know that something is happening.
 
 This feature prints a menu to the screen, allowing the user to navigate three choices of input using the up and down keys (via TTY-prompt gem function): 
 
 After seeing an instruction page on how to play the game, the player shown 40 ? symbols and need to indicate whether each symbol matches the last. Will be given < 45 sec countdown to match as many symbols as possible. Will record number of correct matches and also time taken to answer. Screen will flash green if correct and make a correct sound effect, and will beep incorrect and flash red if incorrect. Player will no longer be shown symbols at the end of the game and will be shown a screen with feedback from their gameplay, such as score, whether this is a personal best for the particular player (linked to username stats), and whether this is a top 5 high score. 
-**how errors will be handled by the application and displayed to the user**
+  
+**how errors will be handled by the application and displayed to the user**  
 The application utilizes conditional loops and rescue and raise error statements. If the user enters an input that is invalid, they will see an error statement and if it occurs in the middle of gameplay, a sound and alert on the screen will indicate this.
 
 
@@ -94,16 +98,16 @@ I used Trello to manage implementation requirements for this project, which can 
 *- any system/hardware requirements*
 
 ### System Requirements
-MemoryGame utilizes gems that are Mac dependent and will not function on other operating systems.
+FishBrains utilizes gems that are Mac dependent and will not function on other operating systems.
 
-BotDog has only been tested on Mac OS High Sierra version 10.13.6.
+FishBrains has only been tested on Mac OS High Sierra version 10.13.6.
 
 The following Ruby Gems are required to run this application: 
-
+```
 - gem "bundler" version ??
 - gem "rspec" version ???
 - gem "colorize" version 0.8.1
-
+```
 
 ### How to Install and Run this application
 
