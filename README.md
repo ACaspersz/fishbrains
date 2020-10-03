@@ -123,28 +123,53 @@ I used Trello to manage implementation requirements for this project, which can 
 |4      |           |           |
 |5  |               |           |
 
+<br>
+
 ### **R10: Help Documentation**
 
-### **You must include:
-*- steps to install the application*
-*- any dependencies required by the application to operate*
-*- any system/hardware requirements*
+<br>
 
-### System Requirements
-FishBrains utilizes gems that are Mac dependent and will not function on other operating systems.
+### **System Requirements**
+FishBrains utilizes gems that are Mac dependent and has not been tested on any other operating systems.
 
 FishBrains has only been tested on Mac OS High Sierra version 10.13.6.
 
-The following Ruby Gems are required to run this application: 
-```
-- gem "bundler" version ??
-- gem "rspec" version ???
-- gem "colorize" version 0.8.1
-```
+### **Dependencies**
 
-### How to Install and Run this application
+The following Ruby Gems are required to run this application: 
+
+- gem "rspec", v 3.9
+- gem "tty-prompt" v0.22.0
+- gem 'colorize', v0.8.1
+- gem 'artii', v2.12
+- gem 'ruby2d', v0.9.2
+
+
+### **How to Install and Run this application**
 
 If you do not have Ruby installed on your computer, follow these instructions to [install and run](https://www.ruby-lang.org/en/documentation/installation/).
 
-Once this is completed, download source documentation here. 
+Once this is completed, download source documentation at <https://github.com/ACaspersz/fishbrains>
+
+On the terminal command line, navigate to the directory you just cloned.
+
+If you do not have the 'bundler' gem installed on your computer, please enter the following code.
+```
+$ install bundler
+```
+Once 'bundler' has been installed, enter the following code to install the gems required for the application.
+```
+$ bundle install 
+```
+When you have navigated to the `src` folder, run the application by inputting the following command 
+
+```
+$ ruby controller.rb
+```
+
+You also have the option to enter your name as argument from the command line for use within the app.
+```
+$ ruby bot-dog.rb name
+```
+
 
