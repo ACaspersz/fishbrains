@@ -7,6 +7,8 @@ require_relative '../views/options_view'
 # require_relative 'stats'
 require 'io/console'
 require 'yaml'
+require 'ruby2d'
+require_relative '../sounds'
 
 
 
@@ -41,22 +43,30 @@ class Game
         prompt3 = TTY::Prompt.new
         prompt3.keypress("
             Game begins in :countdown ...".colorize(:red), timeout: 5)
-        Views::clear_screen
+           
+            Views::clear_screen
     end
 
+
+    
   def symbol_choice(symbol)
     begin
         input = STDIN.getch.to_i
         if input == 1 && @game_array[-1] == symbol
             @correct_counter += 1
+            # Sounds.correct_sound
         elsif input == 0 && @game_array[-1] != symbol
             @correct_counter += 1
+            # Sounds.correct_sound
         elsif input == 1 && @game_array[-1] != symbol
             @incorrect_counter += 1
+            # Sounds.wrong_sound
         elsif input == 0 && @game_array == symbol
             @incorrect_counter += 1
+            # Sounds.wrong_sound
         else
             @invalid_counter += 1
+            # Sounds.beep
         end
         @game_array << symbol
     rescue 
@@ -70,6 +80,7 @@ class Game
             t = Time.at(date1.to_i - Time.now.to_i)
             print "#{t.strftime('0:%S')} seconds left\b"
             sleep 1
+
         end
     end
 
@@ -124,6 +135,7 @@ class Game
             end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
             @response_times << end_time - start_time
         end
+        Sounds.timeout
             puts "FINISHED!!"
             puts "The score is #{score_calc}."
             sleep 2
