@@ -61,20 +61,53 @@ At the end of either the 'Play Game', 'High Scores' or 'Tutorial' screens, a sub
 - Each screen that the user navigates to will have text that instructs them of the purpose of the page.
 -Each screen has a sub-options menu that allows navigation back to other pages which are clearly indicated. 
 
-**How will the user interact with / use each feature?**   
-The user will need to input pre-determined commands into the terminal to interact with the app. The options menu will be present on the screen whenever a selection needs to be made. Each time a selection is made, 'tty-progressbar' will commence, followed by either ascii art or an ascii animation plus sound via mac-say to let the user know that something is happening.
-
-This feature prints a menu to the screen, allowing the user to navigate three choices of input using the up and down keys (via TTY-prompt gem function): 
-
-After seeing an instruction page on how to play the game, the player shown 40 ? symbols and need to indicate whether each symbol matches the last. Will be given < 45 sec countdown to match as many symbols as possible. Will record number of correct matches and also time taken to answer. Screen will flash green if correct and make a correct sound effect, and will beep incorrect and flash red if incorrect. Player will no longer be shown symbols at the end of the game and will be shown a screen with feedback from their gameplay, such as score, whether this is a personal best for the particular player (linked to username stats), and whether this is a top 5 high score. 
-  
-**how errors will be handled by the application and displayed to the user**  
-The application utilizes conditional loops and rescue and raise error statements. If the user enters an input that is invalid, they will see an error statement and if it occurs in the middle of gameplay, a sound and alert on the screen will indicate this.
+**How will the user interact with / use each feature?**  
 
 
-### **R8: Develop a diagram which describes the control flow of your application. Your diagram must:**
-*- show the workflow/logic and/or integration of the features in your application for each feature*
-*- utilise a recognised format or set of conventions for a control flow diagram, such as UML.*
+*User input*   
+ After beginning the app, the user will be prompted to enter their name, which will be stored and used throught the application to personalise experience. Once a name is correctly obtained, the user proceed through a short welcome screen to the main menu automatically.
+
+*Main Menu*  
+ Underneath the banner the user is given the following options, with highlighted text (press up/down arrows to move, enter to select)  
+    - *Play Game*   
+    - *Tutorials*  
+    - *Highscores*  
+    - *Exit*  
+
+*Play Game*  
+If selected from the main menu, game will be initiated. Player will be shown a single symbol (one of 4 possible options, randomly drawn) on screen while the game provides a countdown to start, to give the player time to adjust to game play. 
+
+When countdown finishes, one of 4 symbols will be randomly generated, and the player must respond indicating whether the symbol matches the previous symbol, while a timer appears on screen during play, which indicates to player how much time they have remaining, and to add a further stressor to game play. Players aim to correctly match all symbols in order to increase their score, until 45 seconds has passed. 
+
+After 45 seconds, the game ends and the score will be given to user on screen. 
+
+User can then choose to play again or to return to the main menu.
+
+*Tutorial Screen*   
+If Tutorial is selected from the main menu, the player will be shown instructions on how to play the game, as well as how the score is calculated. Player will then be shown a sub-menu that returns them either to game play, or to the main menu. 
+
+<!-- - High Scores: 
+If selected from the main menu, the High Scores function will display a TTY table of the top 5 scores recorded in previous game play.  -->
+
+*Sub-Options Menu*    
+At the end of either the 'Play Game', 'High Scores' or 'Tutorial' screens, a sub-options menu will be shown with one of two options: 'Play again' or 'Return to main menu' which allows navigation to either of these options, and menus to be accessible from anywhere.
+
+<br>
+<br>
+
+**How will errors be handled by the application and displayed to the user?**  
+<br>
+The application utilizes conditional loops to consider situations where an input from user is invalid for the application. In most cases in this application, if the user enters an input that is invalid, the error will be ignored if it is not an option in any menu screen. 
+
+If user does not enter a user name, they will see an error statement saying "User name required!" and will not be able to continue until a name is entered. 
+
+If an invalid entry is entered during gameplay, user will be able to retry the same symbol and enter a valid input, and continue to attempt this until the countdown finishes. Because of the game play loop structure, their response time will be affected by invalid entries, so the user is more motivated to input correctly. 
+
+
+### **R8: Control FLow**
+<br>
+
+![App Flowchart](docs/app-flow-diagram.jpg)
 
 ### **R9: Implementation Plan**
 
@@ -90,7 +123,7 @@ I used Trello to manage implementation requirements for this project, which can 
 |4      |           |           |
 |5  |               |           |
 
-### R10: **Design help documentation which includes a set of instructions which accurately describe how to use and install the application.**
+### **R10: Help Documentation**
 
 ### **You must include:
 *- steps to install the application*
