@@ -126,6 +126,7 @@ class Game
             puts "FINISHED!!"
             puts "The score is #{score_calc}."
             sleep 2
+            puts ({$user_name => score_calc}.to_yaml)
             Options::return_menu
         
     end
