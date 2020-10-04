@@ -1,18 +1,23 @@
-
+require 'rspec'
 
 module Options
     def main_menu
         Views::clear_screen
-        
-            prompt2 = TTY::Prompt.new(active_color: :cyan)
-            @prompt2menu = [
-                        {"P L A Y" => -> do Game.new end},
-                        {"T U T O R I A L" => -> do Views::game_howto end},
-                        {"S T A T S" => -> do puts "nothing here yet" end},
-                        {"E X I T" => -> do exit end}
-                         ]
-            prompt2.select('What would you like to do today? Use ↑/↓ arrow keys, press Enter to select', @prompt2menu, help: " ", )
-      
+        prompt2 = TTY::Prompt.new(active_color: :cyan)
+        @prompt2menu = [
+            {"P L A Y" => -> do Game.new end},
+            {"T U T O R I A L" => -> do Views::game_howto end},
+            # {"S T A T S" => -> do puts "nothing here yet" end},
+            {"E X I T" => -> do exit end}
+                ]
+        prompt2.select('What would you like to do today? Use ↑/↓ arrow keys, press Enter to select', @prompt2menu, help: " ", )
+        # begin 
+        #     prompt2.select =! prompt2menu[]
+        # rescue
+        #     puts "That's not a valid menu option, please select an option!"
+             
+            
+        # end
     end 
 
     def return_menu

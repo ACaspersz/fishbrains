@@ -169,7 +169,7 @@ $ ruby controller.rb
 
 You also have the option to enter your name as argument from the command line for use within the app.
 ```
-$ ruby bot-dog.rb name
+$ ruby controller.rb name
 ```
 
 

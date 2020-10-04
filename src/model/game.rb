@@ -6,9 +6,10 @@ require_relative '../views/views'
 require_relative '../views/options_view'
 # require_relative 'stats'
 require 'io/console'
-require 'yaml'
+# require 'yaml'
 require 'ruby2d'
-require_relative '../sounds'
+# require_relative '../sounds'
+require 'rspec'
 
 
 
@@ -135,11 +136,11 @@ class Game
             end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
             @response_times << end_time - start_time
         end
-        Sounds.timeout
+        # Sounds.timeout
             puts "FINISHED!!"
             puts "The score is #{score_calc}."
             sleep 2
-            {$user_name => score_calc}.to_yaml
+            # {$user_name => score_calc}.to_yaml
             Options::return_menu
         
     end
