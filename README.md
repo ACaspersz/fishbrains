@@ -2,9 +2,8 @@
 ### **by Annabelle Caspersz**
 
 ### **R3: Referenced Sources**
-
-ICON ART: <https://game-icons.net/>  
-ICON ART: <https://asciiart.club/>
+  
+ASCII ART GENERATOR: <https://asciiart.club/>
 
 
 ### R4: **Provide a link to your source control repository**
@@ -113,15 +112,7 @@ If an invalid entry is entered during gameplay, user will be able to retry the s
 
 Trello board: <https://trello.com/b/enQ4AeJ1/terminal-application-project>
 
-I used Trello to manage implementation requirements for this project, which can be accessed at the above link. I also created a table below to outline tasks further: 
-
-| Feature       | Checklist   | Deadline   |
-| -- | --------- | ---|
-|  1 | More Stuff blfgfiogsfgsl;fgisdfjgsl | And Again|
-| 2   | Put Pipes In | Like this|   
-| 3  |               |          |
-|4      |           |           |
-|5  |               |           |
+I used Trello to manage implementation requirements for this project, which can be accessed at the above link. 
 
 <br>
 
@@ -142,7 +133,6 @@ The following Ruby Gems are required to run this application:
 - gem "tty-prompt" v0.22.0
 - gem 'colorize', v0.8.1
 - gem 'artii', v2.12
-- gem 'ruby2d', v0.9.2
 
 
 ### **How to Install and Run this application**
@@ -172,4 +162,10 @@ You also have the option to enter your name as argument from the command line fo
 $ ruby controller.rb name
 ```
 
+### **OR**  
 
+ Alternatively, you can run the application with the bash script supplied in the source code. Navigate to the controllers folder in your bash terminal and enter the following to run the program: 
+
+ ```
+ ./run_app.sh
+ ```
