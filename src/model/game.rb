@@ -4,11 +4,8 @@ require_relative '../views/art/starfish'
 require_relative '../views/art/anchor'
 require_relative '../views/views'
 require_relative '../views/options_view'
-# require_relative 'stats'
 require 'io/console'
-# require 'yaml'
-require 'ruby2d'
-# require_relative '../sounds'
+
 require 'rspec'
 
 
@@ -110,11 +107,12 @@ class Game
             Art::turtle,
             Art::anchor
         ]
-        date1 = Time.now + 10
+        date1 = Time.now + 45
         while Time.now < date1 do
             Views::clear_screen
             symbol = @game_symbols.shuffle[0]
             puts symbol.colorize(:light_yellow)
+            sleep 0.1
             Views::clear_screen
             puts symbol
             start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
@@ -126,7 +124,6 @@ class Game
                 
             elsif symbol == Art::turtle
                 symbol_choice("turtle")
-                
             elsif symbol == Art::shell
                 symbol_choice("shell")
     
@@ -136,26 +133,19 @@ class Game
             end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
             @response_times << end_time - start_time
         end
-        # Sounds.timeout
+        
             puts "FINISHED!!"
-            puts "The score is #{score_calc}."
+            puts "Your score for this round is #{score_calc}!".colorize(:green)
             puts "GREAT WORK!!"
             sleep 2
-            
+        
             Options::return_menu
         
     end
 
-    def save(score_calc)
-        game.id = next_id
-        @games << game
-        File.open("src/model/game_stats", "w") { |file| file.write(@games.to_yaml) }
-    end
-
-
     
     def thread
-        t1 = Thread.new{countdown(10)}
+        t1 = Thread.new{countdown(45)}
         t2 = Thread.new{play_game()}
         t1.join
         t2.join

@@ -20,12 +20,12 @@ class StartGame
                 $user_name = gets.chomp.to_s
             else 
                 $user_name = ARGV[0]
-                # ARGV.Views::clear
+                
             end
-        if $user_name == ''
-            puts "User name required!"
-            $user_name = gets.chomp.to_s
-        end
+            if $user_name == ''
+                puts "User name required!"
+                $user_name = gets.chomp.to_s
+            end
         end 
         Views::clear_screen
         Views::welcome
