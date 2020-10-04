@@ -27,18 +27,17 @@ Simple brain training exercises have been shown to improve information processin
 This game is for anyone who wants to improve their information processing ability, whether they are children, adults or elderly. Because of the simple interface the game is useful and understandable to all ages, as the symbols and input requirements are easy to grasp.
 
 **How will the target audience access the application?**  
-The user will only require access to a Mac computer. Once the game is downloaded along with its associated gems, it can be run anytime from the command line. It can be accessed anytime the target audience would like to test their ability, compare with their previous stats or other users stats, or hit a personal best score. Its simple functionality and navigation make it understandable and playable by all.
+The user will only require access to a Mac computer. Once the game is downloaded along with its associated gems, it can be run anytime from the command line. It can be accessed anytime the target audience would like to test their ability and its simple functionality and navigation make it understandable and playable by all.
 
 ### **R6: Features of the application**
 
 **1. User can input their name from the command line**.  
  After beginning the app, the user will be prompted to enter their name, which will be stored and used throught the application to personalise experience.
 
-**2. Main Menu: Play game, Tutorials, Highscores, Exit**.  
+**2. Main Menu: Play game, Tutorials, Exit**.  
  Includes the following:
  - *Play Game*, which initiates a round of the flash card game. 
  - *Tutorial*, which explains the rules of the game and how to play, including how the scores are calculated.
- - *Highscores*, which allows user to view highscores from previous game play.
  - *Exit*, to exit the application when finished. 
 
 **3. Play Game**   
@@ -49,8 +48,6 @@ The user will only require access to a Mac computer. Once the game is downloaded
 
 **4. Tutorial Screen**  
 If Tutorial is selected from the main menu, the player will be shown instructions on how to play the game, as well as how the score is calculated.
-
-<!-- **4. High Scores**: If selected from the main menu, the High Scores function will display a TTY table of the top 5 scores recorded in previous game play.  -->
 
 **5. Sub-Options Menu**  
 At the end of either the 'Play Game', 'High Scores' or 'Tutorial' screens, a sub-options menu will be shown with one of two options: 'Play again' or 'Return to main menu' which allows navigation to either of these options, and menus to be accessible from anywhere. 
@@ -82,21 +79,17 @@ If selected from the main menu, game will be initiated. Player will be shown a s
 
 When countdown finishes, one of 4 symbols will be randomly generated, and the player must respond indicating whether the symbol matches the previous symbol, while a timer appears on screen during play, which indicates to player how much time they have remaining, and to add a further stressor to game play. Players aim to correctly match all symbols in order to increase their score, until 45 seconds has passed. 
 
-After 45 seconds, the game ends and the score will be given to user on screen. 
-
-User can then choose to play again or to return to the main menu.
+After 45 seconds, the game ends and the score will be given to user on screen. User can then choose to play again or to return to the main menu.
 
 *Tutorial Screen*   
 If Tutorial is selected from the main menu, the player will be shown instructions on how to play the game, as well as how the score is calculated. Player will then be shown a sub-menu that returns them either to game play, or to the main menu. 
 
-<!-- - High Scores: 
-If selected from the main menu, the High Scores function will display a TTY table of the top 5 scores recorded in previous game play.  -->
 
 *Sub-Options Menu*    
-At the end of either the 'Play Game', 'High Scores' or 'Tutorial' screens, a sub-options menu will be shown with one of two options: 'Play again' or 'Return to main menu' which allows navigation to either of these options, and menus to be accessible from anywhere.
+At the end of either the 'Play Game' or 'Tutorial' screens, a sub-options menu will be shown with one of two options: 'Play again' or 'Return to main menu' which allows navigation to either of these options, and menus to be accessible from anywhere.
 
 <br>
-<br>
+
 
 **How will errors be handled by the application and displayed to the user?**  
 <br>
@@ -133,8 +126,8 @@ The following Ruby Gems are required to run this application:
 
 - gem "rspec", v 3.9
 - gem "tty-prompt" v0.22.0
-- gem 'colorize', v0.8.1
-- gem 'artii', v2.12
+- gem "colorize", v0.8.1
+- gem "artii", v2.12
 
 
 ### **How to Install and Run this application**
