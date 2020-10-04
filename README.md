@@ -1,14 +1,18 @@
-# T1A3 Assignment - Terminal Application 
+# **T1A3 Assignment - Terminal Application** 
 ### **by Annabelle Caspersz**
+<br>
 
 ### **R3: Referenced Sources**
   
 ASCII ART GENERATOR: <https://asciiart.club/>
 
+<br>
 
-### R4: **Provide a link to your source control repository**
+### **R4: Provide a link to your source control repository**
 
 Remote repository (GitHub): <https://github.com/ACaspersz/fishbrains>
+
+<br>
 
 ### **R5: Software Development Plan: Statement of Purpose and Scope**
 
@@ -118,8 +122,6 @@ I used Trello to manage implementation requirements for this project, which can 
 
 ### **R10: Help Documentation**
 
-<br>
-
 ### **System Requirements**
 FishBrains utilizes gems that are Mac dependent and has not been tested on any other operating systems.
 
@@ -161,10 +163,13 @@ You also have the option to enter your name as argument from the command line fo
 ```
 $ ruby controller.rb name
 ```
+<br>
 
 ### **OR**  
 
- Alternatively, you can run the application with the bash script supplied in the source code. Navigate to the controllers folder in your bash terminal and enter the following to run the program: 
+<br>
+
+ Alternatively, you can run the application with the bash script supplied in the source code. Navigate to the `controllers` folder in your bash terminal and enter the following to run the program: 
 
  ```
  ./run_app.sh

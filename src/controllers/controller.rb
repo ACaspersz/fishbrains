@@ -6,11 +6,7 @@ require_relative '../views/views'
 require_relative '../views/options_view'
 require 'colorize'
 require 'tty-prompt'
-
-
- 
-
-
+require 'rspec'
 
 #----------------------------------------------------
 #              GAME Start                           

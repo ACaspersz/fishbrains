@@ -4,7 +4,7 @@ require 'artii'
 module Views
 
     def self.game_howto
-        type_slow("Welcome to the Memory Game Start Point!")
+        puts Artii::Base.new(:font => 'slant').asciify("HOW TO PLAY").colorize(:blue)
         type_slow("To win, match all symbols with the symbol IMMEDIATELY PREVIOUS TO IT.")
         type_slow("If the symbol MATCHES the previous symbol, PRESS 1")
         type_slow("If the symbol does NOT match, PRESS 0")

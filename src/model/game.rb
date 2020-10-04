@@ -114,7 +114,7 @@ class Game
         while Time.now < date1 do
             Views::clear_screen
             symbol = @game_symbols.shuffle[0]
-            puts symbol.colorize(:black)
+            puts symbol.colorize(:light_yellow)
             Views::clear_screen
             puts symbol
             start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
@@ -139,11 +139,20 @@ class Game
         # Sounds.timeout
             puts "FINISHED!!"
             puts "The score is #{score_calc}."
+            puts "GREAT WORK!!"
             sleep 2
-            # {$user_name => score_calc}.to_yaml
+            
             Options::return_menu
         
     end
+
+    def save(score_calc)
+        game.id = next_id
+        @games << game
+        File.open("src/model/game_stats", "w") { |file| file.write(@games.to_yaml) }
+    end
+
+
     
     def thread
         t1 = Thread.new{countdown(10)}
