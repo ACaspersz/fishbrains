@@ -52,19 +52,19 @@ class Game
         input = STDIN.getch.to_i
         if input == 1 && @game_array[-1] == symbol
             @correct_counter += 1
-            # Sounds.correct_sound
+           
         elsif input == 0 && @game_array[-1] != symbol
             @correct_counter += 1
-            # Sounds.correct_sound
+            
         elsif input == 1 && @game_array[-1] != symbol
             @incorrect_counter += 1
-            # Sounds.wrong_sound
+            
         elsif input == 0 && @game_array == symbol
             @incorrect_counter += 1
-            # Sounds.wrong_sound
+           
         else
             @invalid_counter += 1
-            # Sounds.beep
+            
         end
         @game_array << symbol
     rescue 

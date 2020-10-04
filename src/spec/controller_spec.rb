@@ -1,5 +1,5 @@
-require '../controllers/controller'
-require 'rspec'
+# require '../controllers/controller'
+# require 'rspec'
 
 # describe StartGame do
 #     it "should check if there is a name entered" do

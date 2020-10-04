@@ -116,9 +116,8 @@ I used Trello to manage implementation requirements for this project, which can 
 ### **R10: Help Documentation**
 
 ### **System Requirements**
-FishBrains utilizes gems that are Mac dependent and has not been tested on any other operating systems.
 
-FishBrains has only been tested on Mac OS High Sierra version 10.13.6.
+FishBrains has only been tested on Mac OS High Sierra version 10.13.6 and has not been tested on any other operating systems.
 
 ### **Dependencies**
 
